@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "helloworldchat-2a2c9": {
+      "hosting": {
+        "HelloWorldChat": [
+          "helloworldchat-2a2c9"
+        ]
+      }
+    }
+  }
+}

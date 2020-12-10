@@ -17,6 +17,8 @@ export class NavbarComponent {
   async onLogout(){
     try{
       await this.firebaseAuth.logout();
+      sessionStorage.removeItem('alias');
+      sessionStorage.removeItem('userUid');
       this.router.navigate(["/login"]);
     }catch(error){
       console.log(error);

@@ -4,29 +4,31 @@
       <div class="mesgs">
         <div class="msg_history">
           <div *ngFor="let mensaje of listaMensajes">
-            <div class="incoming_msg" *ngIf="mensaje.idUsuario != 0">
+            <div class="incoming_msg" *ngIf="mensaje.userUid != userUid">
               <div class="received_msg">
                 <div class="received_withd_msg">
-                  <span class="time_date"><h5>{{ mensaje.idUsuario}}</h5></span>
-                  <p>{{ mensaje.mensaje }}</p>
-                  <span class="time_date">{{ mensaje.datetime | date :'hh:mm'}}</span>
+                  <span class="time_date"><h5>{{ mensaje.alias}}</h5></span>
+                  <p>{{ mensaje.message }}</p>
+                  <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>
                 </div>
               </div>
             </div>
-            <div class="outgoing_msg" *ngIf="mensaje.idUsuario == 0">
+            <div class="outgoing_msg" *ngIf="mensaje.userUid == userUid">
               <div class="sent_msg">
-                <p>{{ mensaje.mensaje }}</p>
-                <span class="time_date">{{ mensaje.datetime | date :'hh:mm'}}</span>
+                <p>{{ mensaje.message }}</p>
+                <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="type_msg">
-          <div class="input_msg_write">
-            <input type="text" class="write_msg" placeholder="Type a message" />
-            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+        <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" class="write_msg form-control" formControlName="message" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
           </div>
-        </div>
+      </form>
       </div>
     </div>
   </div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { element } from 'protractor';
+import { Message } from '../models/message';
+import { MessageService } from '../service/message.service';
 
 @Component({
   selector: 'chat-view',
@@ -7,37 +11,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatViewComponent implements OnInit {
 
-  listaMensajes = [
-      {
-        "idUsuario": 0,
-        "mensaje": "Hola soy Pedro, que tal estais?",
-        "datetime": "2020-12-07 22:00:00"
-      },
-      {
-        "idUsuario": 1,
-        "mensaje": "Hola soy Pablo, que tal estais?",
-        "datetime": "2020-12-07 22:01:00"
-      },
-      {
-        "idUsuario": 0,
-        "mensaje": "Encantado",
-        "datetime": "2020-12-07 22:02:00"
-      },
-      {
-        "idUsuario": 0,
-        "mensaje": ":)",
-        "datetime": "2020-12-07 22:02:00"
-      },
-      {
-        "idUsuario": 2,
-        "mensaje": "Holiiii",
-        "datetime": "2020-12-07 22:04:00"
-      }
-    ];
+  messageForm = new FormGroup({
+    message: new FormControl('')
+  });
 
-  constructor() { }
+  userUid: string;
+  userAlias: string;
 
-  ngOnInit(): void {
+  listaMensajes: Message[];
+
+  constructor(private messageService: MessageService) {
+    this.userAlias = sessionStorage.getItem("alias");
+    this.userUid = sessionStorage.getItem("userUid");
   }
 
+  ngOnInit(): void {
+    console.log('userId', this.userUid);
+
+    this.messageService.getMessages()
+    .snapshotChanges()
+    .subscribe(item => {
+      this.listaMensajes = [];
+      item.forEach(element => {
+        let x = element.payload.toJSON();
+        x["$key"] = element.key;
+        this.listaMensajes.push(x as Message);
+      })
+    });
+  }
+
+  sendMessage(){
+    console.log(this.userUid);
+    let message = new Message();
+    message.alias = this.userAlias;
+    message.message = this.messageForm.value.message;
+    message.userUid = this.userUid;
+    message.fechaHora = new Date().toLocaleString();
+
+    this.messageService.insertMessage(message);
+
+    this.messageForm.reset();
+  }
 }

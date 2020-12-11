@@ -26,8 +26,6 @@ export class ChatViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('userId', this.userUid);
-
     this.messageService.getMessages()
     .snapshotChanges()
     .subscribe(item => {
@@ -41,7 +39,6 @@ export class ChatViewComponent implements OnInit {
   }
 
   sendMessage(){
-    console.log(this.userUid);
     let message = new Message();
     message.alias = this.userAlias;
     message.message = this.messageForm.value.message;

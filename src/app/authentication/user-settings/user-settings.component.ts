@@ -28,11 +28,10 @@ export class UserSettingsComponent implements OnInit {
 
   async onUpdate(){
     const {email, password, alias} = this.updateUserSetting.value;
-
+    /*
     let userUpdate = new User();
     userUpdate.userUid = this.userUid;
     userUpdate.alias = alias;
-
     try{
       this.userService.updateUser(userUpdate);
       sessionStorage.removeItem('alias');
@@ -40,6 +39,17 @@ export class UserSettingsComponent implements OnInit {
     }catch(error){
       console.log(error);
     }
+    */
+    const userUpdate = {
+      alias: alias
+    };
+    console.log('user', userUpdate);
+    this.userService.updateUser('-MO2jVgp2-3PNxlOYB5F', userUpdate)
+      //.then(() => this.message = 'The tutorial was updated successfully!')
+      .catch(err => console.log(err));
+
+    sessionStorage.removeItem('alias');
+    sessionStorage.setItem('alias', alias);
 
     this.router.navigate(['/']);
   }

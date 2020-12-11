@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
@@ -29,9 +30,7 @@ export class UserService {
     });
   }
 
-  updateUser(user: User){
-    this.userList.update(user.userUid, {
-      alias: user.alias,
-    })
+  updateUser(key: string, value: any): Promise<void> {
+    return this.userList.update(key, value);
   }
 }

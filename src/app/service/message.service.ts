@@ -9,7 +9,9 @@ export class MessageService {
 
   messageList: AngularFireList<any>;
 
-  constructor(private firebase:AngularFireDatabase) { }
+  constructor(private firebase:AngularFireDatabase) {
+    this.messageList = this.getMessages();
+  }
 
   getMessages(){
     this.messageList = this.firebase.list('messages');

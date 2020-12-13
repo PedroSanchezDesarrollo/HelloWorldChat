@@ -9,14 +9,16 @@
                 <div class="received_withd_msg">
                   <span class="time_date"><h5>{{ mensaje.alias}}</h5></span>
                   <p>{{ mensaje.message }}</p>
-                  <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>
+                  <!-- <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>-->
+                  <span class="time_date">{{ mensaje.fechaHora}}</span>
                 </div>
               </div>
             </div>
             <div class="outgoing_msg" *ngIf="mensaje.userUid == userUid">
               <div class="sent_msg">
                 <p>{{ mensaje.message }}</p>
-                <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>
+                <!-- <span class="time_date">{{ mensaje.fechaHora | date :'hh:mm'}}</span>-->
+                <span class="time_date">{{ mensaje.fechaHora}}</span>
               </div>
             </div>
           </div>

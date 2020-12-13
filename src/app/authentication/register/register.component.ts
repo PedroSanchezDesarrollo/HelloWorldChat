@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit {
       this.newUser.userUid = JSON.parse(JSON.stringify(user)).user.uid;
 
       this.userService.insertUser(this.newUser);
-      localStorage.setItem('userLogged', JSON.stringify(this.newUser));
+      sessionStorage.setItem('alias', this.newUser.alias);
+      sessionStorage.setItem('userUid', this.newUser.userUid);
 
       this.router.navigate(["/"]);
     }catch(error){

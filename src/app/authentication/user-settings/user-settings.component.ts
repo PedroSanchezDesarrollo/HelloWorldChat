@@ -12,6 +12,7 @@ import { UserService } from 'src/app/service/user.service';
 export class UserSettingsComponent implements OnInit {
 
   userUid: string;
+  userUpdate = new User();
 
   updateUserSetting = new FormGroup({
     email: new FormControl(''),
@@ -21,37 +22,33 @@ export class UserSettingsComponent implements OnInit {
 
   constructor(private router:Router, private userService: UserService) {
     this.userUid = sessionStorage.getItem("userUid");
+    this.userService.getUser(sessionStorage.getItem('userUid'))
+      .snapshotChanges()
+      .subscribe(item => {
+        if(item.length !== 0){
+          let userJson = item[0].payload.toJSON();
+          userJson["$key"] = item[0].key;
+          this.userUpdate = userJson as User;
+        }
+      });
   }
 
   ngOnInit(): void {
   }
 
   async onUpdate(){
+    let userLogged = new User();
     const {email, password, alias} = this.updateUserSetting.value;
-    /*
-    let userUpdate = new User();
-    userUpdate.userUid = this.userUid;
-    userUpdate.alias = alias;
-    try{
-      this.userService.updateUser(userUpdate);
-      sessionStorage.removeItem('alias');
-      sessionStorage.setItem('alias', alias);
-    }catch(error){
-      console.log(error);
-    }
-    */
-    const userUpdate = {
+    const valuesToUpdate = {
       alias: alias
     };
-    console.log('user', userUpdate);
-    this.userService.updateUser('-MO2jVgp2-3PNxlOYB5F', userUpdate)
-      //.then(() => this.message = 'The tutorial was updated successfully!')
-      .catch(err => console.log(err));
+
+    this.userService.updateUser(this.userUpdate.$key, valuesToUpdate)
+    .catch(err => console.log(err));
 
     sessionStorage.removeItem('alias');
     sessionStorage.setItem('alias', alias);
 
     this.router.navigate(['/']);
   }
-
 }

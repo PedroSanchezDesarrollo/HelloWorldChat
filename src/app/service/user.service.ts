@@ -11,7 +11,9 @@ export class UserService {
 
   userList: AngularFireList<any>;
 
-  constructor(private firebase: AngularFireDatabase) {}
+  constructor(private firebase: AngularFireDatabase) {
+    this.userList = this.getUsers();
+  }
 
   getUsers(){
     return this.firebase.list('users');
@@ -22,7 +24,6 @@ export class UserService {
   }
 
   insertUser(newUser: User){
-    this.userList = this.getUsers();
     this.userList.push({
       userUid: newUser.userUid,
       email: newUser.email,

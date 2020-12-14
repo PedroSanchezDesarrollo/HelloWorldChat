@@ -39,14 +39,16 @@ export class ChatViewComponent implements OnInit {
   }
 
   sendMessage(){
-    let message = new Message();
-    message.alias = this.userAlias;
-    message.message = this.messageForm.value.message;
-    message.userUid = this.userUid;
-    message.fechaHora = new Date().toLocaleString();
+    //Comprobamos que el mensaje contenga algo y que no sea unicamente espacios en blanco
+    if(!/^\s+$/.test(this.messageForm.value.message) && this.messageForm.value.message != null){
+      let message = new Message();
+      message.alias = this.userAlias;
+      message.message = this.messageForm.value.message;
+      message.userUid = this.userUid;
+      message.fechaHora = new Date().toLocaleString();
 
-    this.messageService.insertMessage(message);
-
+      this.messageService.insertMessage(message);
+    }
     this.messageForm.reset();
   }
 }

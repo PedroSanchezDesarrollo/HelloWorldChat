@@ -3,4 +3,8 @@ export class User{
   userUid: string;
   email: string;
   alias: string;
+  name: string;
+  surname: string;
+  birthdate: Date;
+  sex: string;
 }

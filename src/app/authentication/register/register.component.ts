@@ -17,7 +17,12 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
-    alias: new FormControl('')
+    passwordConfirm: new FormControl(''),
+    alias: new FormControl(''),
+    name: new FormControl(''),
+    surname: new FormControl(''),
+    birthdate: new FormControl(''),
+    sex: new FormControl('')
   });
 
   constructor(private authService:AuthenticationService, private router:Router, private userService: UserService) { }
@@ -26,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegister(){
-    const {email, password, alias} = this.registerForm.value;
+    const {email, password, passwordConfirm, alias, name, surname, birthdate, sex} = this.registerForm.value;
 
     let newUser = new User();
 
@@ -36,6 +41,10 @@ export class RegisterComponent implements OnInit {
       //Cuando creo el usuario a la vez creo una instancia en la base de datos para guardar datos extra
       this.newUser.email = email;
       this.newUser.alias = alias;
+      this.newUser.name = name;
+      this.newUser.surname = surname;
+      this.newUser.birthdate = birthdate;
+      this.newUser.sex = sex;
       this.newUser.userUid = JSON.parse(JSON.stringify(user)).user.uid;
 
       this.userService.insertUser(this.newUser);

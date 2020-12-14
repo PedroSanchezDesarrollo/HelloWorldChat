@@ -9,12 +9,28 @@
             <input type="email" class="form-control" formControlName="email" disabled placeholder="{{ userUpdate.email }}">
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" formControlName="password" disabled>
-          </div>
-          <div class="form-group">
             <label for="alias">Alias</label>
             <input type="text" class="form-control" formControlName="alias" placeholder="{{ userUpdate.alias }}">
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="{{ userUpdate.name }}">
+          </div>
+          <div class="form-group">
+            <label for="surname">Surname</label>
+            <input type="text" class="form-control" formControlName="surname" placeholder="{{ userUpdate.surname }}">
+          </div>
+          <div class="form-group">
+            <label for="birthdate">Birthdate</label>
+            <input type="date" class="form-control" formControlName="birthdate" value="{{userUpdate.birthdate}}">
+          </div>
+          <div class="form-group">
+            <label for="sex">Sex</label>
+            <select class="form-control" formControlName="sex" value="{{userUpdate.sex}}">
+              <option value="">------</option>
+              <option vale="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
         </form>

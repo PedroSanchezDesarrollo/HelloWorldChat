@@ -27,7 +27,11 @@ export class UserService {
     this.userList.push({
       userUid: newUser.userUid,
       email: newUser.email,
-      alias: newUser.alias
+      alias: newUser.alias,
+      name: newUser.name,
+      surname: newUser.surname,
+      birthdate: newUser.birthdate,
+      sex: newUser.sex,
     });
   }
 

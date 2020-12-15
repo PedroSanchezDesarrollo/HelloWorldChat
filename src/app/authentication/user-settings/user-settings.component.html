@@ -1,38 +1,50 @@
 <div class="row">
-  <div class="col-md6 mx-auto mt-5">
+  <div class="col-6 mx-auto mt-5">
     <div class="card">
       <div class="card-body">
         <h1 class="text-center"><i>HelloWorldChat</i></h1>
-        <form [formGroup]="updateUserSetting" (ngSubmit)="onUpdate()">
+        <form [formGroup]="updateUserSetting" (ngSubmit)="onUpdate()" class="mt-4">
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email">{{'registerUpdateUser.email'| translate}}</label>
             <input type="email" class="form-control" formControlName="email" disabled placeholder="{{ userUpdate.email }}">
           </div>
           <div class="form-group">
-            <label for="alias">Alias</label>
+            <label for="alias">{{'registerUpdateUser.alias'| translate}}</label>
             <input type="text" class="form-control" formControlName="alias" placeholder="{{ userUpdate.alias }}">
           </div>
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name" placeholder="{{ userUpdate.name }}">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="name">{{'registerUpdateUser.name'| translate}}</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="{{ userUpdate.name }}">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="surname">{{'registerUpdateUser.surname'| translate}}</label>
+                <input type="text" class="form-control" formControlName="surname" placeholder="{{ userUpdate.surname }}">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="surname">Surname</label>
-            <input type="text" class="form-control" formControlName="surname" placeholder="{{ userUpdate.surname }}">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="birthdate">{{'registerUpdateUser.birthdate'| translate}}</label>
+                <input type="date" class="form-control" formControlName="birthdate" value="{{userUpdate.birthdate}}">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="sex">{{'registerUpdateUser.sex'| translate}}</label>
+                <select class="form-control" formControlName="sex" value="{{userUpdate.sex}}">
+                  <option value="">------</option>
+                  <option vale="Male">{{'registerUpdateUser.male'| translate}}</option>
+                  <option value="Female">{{'registerUpdateUser.female'| translate}}</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="birthdate">Birthdate</label>
-            <input type="date" class="form-control" formControlName="birthdate" value="{{userUpdate.birthdate}}">
-          </div>
-          <div class="form-group">
-            <label for="sex">Sex</label>
-            <select class="form-control" formControlName="sex" value="{{userUpdate.sex}}">
-              <option value="">------</option>
-              <option vale="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">{{'registerUpdateUser.save'| translate}}</button>
         </form>
       </div>
     </div>

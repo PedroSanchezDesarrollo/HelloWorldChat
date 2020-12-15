@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-md6 mx-auto mt-5">
+  <div class="col-6 mx-auto mt-5">
     <div class="card">
       <div class="card-body">
         <h1 class="text-center"><i>HelloWorldChat</i></h1>
-        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="mt-4">
           <div class="form-group">
             <label for="email">{{'registerUpdateUser.email'| translate}}</label>
             <input type="email" class="form-control" formControlName="email">
@@ -20,29 +20,41 @@
             <label for="alias">{{'registerUpdateUser.alias'| translate}}</label>
             <input type="text" class="form-control" formControlName="alias">
           </div>
-          <div class="form-group">
-            <label for="name">{{'registerUpdateUser.name'| translate}}</label>
-            <input type="text" class="form-control" formControlName="name">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="name">{{'registerUpdateUser.name'| translate}}</label>
+                <input type="text" class="form-control" formControlName="name">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="surname">{{'registerUpdateUser.surname'| translate}}</label>
+                <input type="text" class="form-control" formControlName="surname">
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="surname">{{'registerUpdateUser.surname'| translate}}</label>
-            <input type="text" class="form-control" formControlName="surname">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="birthdate">{{'registerUpdateUser.birthdate'| translate}}</label>
+                <input type="date" class="form-control" formControlName="birthdate">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <label for="sex">{{'registerUpdateUser.sex'| translate}}</label>
+                <select class="form-control" formControlName="sex">
+                  <option value="">------</option>
+                  <option vale="Male">{{'registerUpdateUser.male'| translate}}</option>
+                  <option value="Female">{{'registerUpdateUser.female'| translate}}</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="birthdate">{{'registerUpdateUser.birthdate'| translate}}</label>
-            <input type="date" class="form-control" formControlName="birthdate">
-          </div>
-          <div class="form-group">
-            <label for="sex">{{'registerUpdateUser.sex'| translate}}</label>
-            <select class="form-control" formControlName="sex">
-              <option value="">------</option>
-              <option vale="Male">{{'registerUpdateUser.male'| translate}}</option>
-              <option value="Female">{{'registerUpdateUser.female'| translate}}</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block">{{'registerUpdateUser.register'| translate}}</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">{{'registerUpdateUser.register'| translate}}</button>
         </form>
-        <div class="form-group mt-3">
+        <div class="form-group mt-4 text-center">
           <p>{{'registerUpdateUser.haveAccount'| translate}}<a [routerLink]="['/login']"> {{'registerUpdateUser.login'| translate}}</a></p>
         </div>
       </div>

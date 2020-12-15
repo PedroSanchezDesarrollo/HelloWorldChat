@@ -40,7 +40,7 @@ export class ChatViewComponent implements OnInit {
 
   sendMessage(){
     //Comprobamos que el mensaje contenga algo y que no sea unicamente espacios en blanco
-    if(!/^\s+$/.test(this.messageForm.value.message) && this.messageForm.value.message != null){
+    if(!/^\s+$/.test(this.messageForm.value.message) && this.messageForm.value.message != null && this.messageForm.value.message !== ""){
       let message = new Message();
       message.alias = this.userAlias;
       message.message = this.messageForm.value.message;

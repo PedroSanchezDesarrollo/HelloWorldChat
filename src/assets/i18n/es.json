@@ -1,0 +1,33 @@
+{
+  "login": {
+    "email" : "Email",
+    "password" : "Contraseña",
+    "login" : "Iniciar Sesión",
+    "createAccount" : "Cree una cuenta.",
+    "register" : "Registrarse"
+  },
+  "registerUpdateUser" :{
+    "email" : "Email",
+    "password" : "Contraseña",
+    "repeatPassword" : "Repetir Contraseña",
+    "alias" : "Alias",
+    "name" : "Nombre",
+    "surname" : "Apellidos",
+    "birthdate" : "Fecha de nacimiento",
+    "sex" : "Sexo",
+    "male" : "Masculino",
+    "female" : "Femenino",
+    "haveAccount" : "¿Ya tiene una cuenta?",
+    "login" : "Iniciar Sesion",
+    "register" : "Registrarse",
+    "save" : "Guardar"
+  },
+  "navBar" : {
+    "accountSettings" : "Ajustes",
+    "logout" : "Cerrar sesión"
+  },
+  "chatView" : {
+    "typeMsg" : "Escribir un mensaje...",
+    "sendMsg" : "Enviar el mensaje"
+  }
+}

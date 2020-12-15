@@ -5,17 +5,17 @@
         <h1><i>HelloWorldChat</i></h1>
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email">{{'login.email'| translate}}</label>
             <input type="email" class="form-control" formControlName="email">
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">{{'login.password'| translate}}</label>
             <input type="password" class="form-control" formControlName="password">
           </div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">{{'login.login'| translate}}</button>
         </form>
         <div class="form-group mt-3">
-          <p>Create an account. <a [routerLink]="['/register']"> Register</a></p>
+          <p>{{'login.createAccount'| translate}} <a [routerLink]="['/register']"> {{'login.register'| translate}}</a></p>
         </div>
       </div>
     </div>

@@ -1,0 +1,33 @@
+{
+  "login": {
+    "email" : "Email",
+    "password" : "Password",
+    "login" : "Login",
+    "createAccount" : "Create an account.",
+    "register" : "Register"
+  },
+  "registerUpdateUser" :{
+    "email" : "Email",
+    "password" : "Password",
+    "repeatPassword" : "Repeat Password",
+    "alias" : "Alias",
+    "name" : "Name",
+    "surname" : "Surname",
+    "birthdate" : "Birthdate",
+    "sex" : "Sex",
+    "male" : "Male",
+    "female" : "Female",
+    "haveAccount" : "Do you have an account?",
+    "login" : "Login",
+    "register" : "Register",
+    "save" : "Save"
+  },
+  "navBar" : {
+    "accountSettings" : "Account Settings",
+    "logout" : "Logout"
+  },
+  "chatView" : {
+    "typeMsg" : "Type a message...",
+    "sendMsg" : "Send message"
+  }
+}

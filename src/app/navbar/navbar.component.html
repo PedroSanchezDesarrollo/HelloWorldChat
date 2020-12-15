@@ -10,9 +10,9 @@
           {{ user?.email }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/changeUserSetting">Account Settings</a>
+          <a class="dropdown-item" href="/changeUserSetting">{{'navBar.accountSettings'| translate}}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item"(click)="onLogout()">Logout</a>
+          <a class="dropdown-item"(click)="onLogout()">{{'navBar.logout'| translate}}</a>
         </div>
       </li>
     </ul>
